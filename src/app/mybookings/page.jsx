@@ -49,6 +49,8 @@ const Page = () => {
         const data = await resp.json();
         setBooking(data?.mybookings);
       };
+
+      loadData();
     }
   }, [session?.data?.user?.email]);
 
