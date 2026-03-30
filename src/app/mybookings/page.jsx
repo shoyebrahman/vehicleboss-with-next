@@ -8,18 +8,18 @@ import { ToastContainer, toast } from "react-toastify";
 const Page = () => {
   const session = useSession();
   const [bookings, setBooking] = useState([]);
-  const loadData = async () => {
-    const resp = await fetch(
-      `http://localhost:3000/mybookings/api/${session?.data?.user?.email}`,
-    );
-    const data = await resp.json();
-    setBooking(data?.mybookings);
-  };
+  // const loadData = async () => {
+  //   const resp = await fetch(
+  //     `https://vehicleboss-with-next.vercel.app/mybookings/api/${session?.data?.user?.email}`,
+  //   );
+  //   const data = await resp.json();
+  //   setBooking(data?.mybookings);
+  // };
 
   const handleDelete = async (id) => {
     try {
       const res = await fetch(
-        `http://localhost:3000/checkout/api/booking/${id}`,
+        `https://vehicleboss-with-next.vercel.app/checkout/api/booking/${id}`,
         {
           method: "DELETE",
         },
@@ -42,7 +42,13 @@ const Page = () => {
 
   useEffect(() => {
     if (session?.data?.user?.email) {
-      loadData();
+      const loadData = async () => {
+        const resp = await fetch(
+          `https://vehicleboss-with-next.vercel.app/mybookings/api/${session?.data?.user?.email}`,
+        );
+        const data = await resp.json();
+        setBooking(data?.mybookings);
+      };
     }
   }, [session?.data?.user?.email]);
 

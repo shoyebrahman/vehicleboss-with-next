@@ -13,7 +13,7 @@ const Page = ({ params }) => {
   //   const loadBooking = async () => {
   //     try {
   //       const resp = await fetch(
-  //         `http://localhost:3000/checkout/api/booking/${id}`,
+  //         `https://vehicleboss-with-next.vercel.app/checkout/api/booking/${id}`,
   //       );
   //       const result = await resp.json();
   //       setBooking(result.data); // ডাটা সেভ করা হচ্ছে
@@ -31,7 +31,7 @@ const Page = ({ params }) => {
       address: event.target.address.value,
     };
     const resp = await fetch(
-      `http://localhost:3000/checkout/api/booking/${id}`,
+      `https://vehicleboss-with-next.vercel.app/checkout/api/booking/${id}`,
       {
         method: "PATCH",
         body: JSON.stringify(updatedBooking),
@@ -49,10 +49,10 @@ const Page = ({ params }) => {
     const loadBooking = async () => {
       try {
         const resp = await fetch(
-          `http://localhost:3000/checkout/api/booking/${id}`,
+          `https://vehicleboss-with-next.vercel.app/checkout/api/booking/${id}`,
         );
         const result = await resp.json();
-        setBooking(result.data); // ডাটা সেভ করা হচ্ছে
+        setBooking(result.data);
       } catch (error) {
         console.error("Fetch error:", error);
       }
