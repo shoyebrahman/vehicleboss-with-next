@@ -2,7 +2,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+//import { toast } from "react-toastify";
 import { ToastContainer, toast } from "react-toastify";
 import { use } from "react";
 
