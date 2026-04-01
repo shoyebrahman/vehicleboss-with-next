@@ -30,7 +30,7 @@ const handler = NextAuth({
 
         const db = await connectDB();
 
-        const currentUser = await db.collection("user").findOne({ email });
+        const currentUser = await db.collection("users").findOne({ email });
 
         if (!currentUser) {
           return null;
@@ -68,10 +68,10 @@ const handler = NextAuth({
         const { name, email, image } = user;
         try {
           const db = await connectDB();
-          const userCollection = db.collection("user");
+          const userCollection = db.collection("users");
           const userExist = await userCollection.findOne({ email });
           if (!userExist) {
-            const res = await userCollection.insertOne(user);
+            const res = await userCollection.insertOne(users);
             return user;
           } else {
             return user;
