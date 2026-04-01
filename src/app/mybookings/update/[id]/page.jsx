@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { use } from "react";
 
 const Page = ({ params }) => {
@@ -64,6 +65,7 @@ const Page = ({ params }) => {
 
   return (
     <div className="container mx-auto">
+      <ToastContainer />
       <div className="relative  h-72">
         {img && (
           <Image
