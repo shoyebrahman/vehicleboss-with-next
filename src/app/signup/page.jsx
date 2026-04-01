@@ -23,8 +23,18 @@ const page = () => {
       },
     );
     console.log(resp);
-    if (resp.status === 200) {
-      event.target.reset();
+    const data = await resp.json();
+    console.log(data);
+
+    if (resp.ok) {
+      await signIn("credentials", {
+        email: newUser.email,
+        password: newUser.password,
+        redirect: true,
+        callbackUrl: "/",
+      });
+    } else {
+      alert(data.message);
     }
   };
   return (
@@ -67,7 +77,7 @@ const page = () => {
               className="input input-bordered w-full max-w-xs"
             />{" "}
             <br />
-            <button className="w-full btn btn-primary mt-12">Sign In</button>
+            <button className="w-full btn btn-primary mt-12">Sign up</button>
           </form>
           <div>
             <h6 className="my-12 text-center">or signin with</h6>
