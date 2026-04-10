@@ -95,11 +95,11 @@ const navitems = [
   },
   {
     title: "About",
-    path: "/About",
+    path: "/about",
   },
   {
     title: "Services",
-    path: "/Services",
+    path: "/services",
   },
   {
     title: "MyBooking",
