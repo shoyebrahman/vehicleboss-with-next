@@ -55,38 +55,40 @@ const Page = () => {
   }, [session?.data?.user?.email]);
 
   return (
-    <div className="container mx-auto">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ToastContainer />
-      <div className="relative  h-72">
+
+      <div className="relative w-full h-48 sm:h-64 md:h-72 lg:h-80 rounded-xl overflow-hidden">
         <Image
-          className="absolute h-72 w-full left-0 top-0 object-cover"
+          className="absolute w-full h-full object-cover"
           src={"/assets/images/about_us/parts.jpg"}
           alt="service"
           width={1920}
           height={1080}
-          style={{ width: "90vw" }}
         />
-        <div className="absolute h-full left-0 top-0 flex items-center justify-center bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)] ">
-          <h1 className="text-white text-3xl font-bold flex justify-center items-center ml-8">
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
+          <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold px-4 sm:px-8">
             My Bookings
           </h1>
         </div>
       </div>
-      <div className="mt-12">
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
+
+      {/* for Desktop Table */}
+      <div className="hidden md:block mt-10">
+        <div className="overflow-x-auto rounded-xl">
+          <table className="table w-full">
+            <thead className="bg-gray-200">
               <tr>
-                <th></th>
+                <th>#</th>
                 <th>Service Name</th>
                 <th>Price</th>
-                <th>Booking Date</th>
+                <th>Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
+
             <tbody>
-              {/* row 1 */}
               {bookings?.map(({ serviceTitle, _id, date, price }, index) => (
                 <tr key={_id}>
                   <th>{index + 1}</th>
@@ -94,13 +96,13 @@ const Page = () => {
                   <td>{price}</td>
                   <td>{date}</td>
                   <td>
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center gap-2">
                       <Link href={`/mybookings/update/${_id}`}>
-                        <button className="btn btn-primary">Edit</button>
+                        <button className="btn btn-sm btn-primary">Edit</button>
                       </Link>
                       <button
                         onClick={() => handleDelete(_id)}
-                        className="btn btn-error"
+                        className="btn btn-sm btn-error"
                       >
                         Delete
                       </button>
@@ -111,6 +113,41 @@ const Page = () => {
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* only for mobile user  */}
+      <div className="md:hidden mt-8 space-y-4">
+        {bookings?.map(({ serviceTitle, _id, date, price }, index) => (
+          <div
+            key={_id}
+            className="bg-white shadow-md rounded-xl p-4 space-y-2"
+          >
+            <p className="font-semibold text-lg">
+              {index + 1}. {serviceTitle}
+            </p>
+
+            <p className="text-sm">
+              <span className="font-medium">Price:</span> {price}
+            </p>
+
+            <p className="text-sm">
+              <span className="font-medium">Date:</span> {date}
+            </p>
+
+            <div className="flex gap-2 pt-2">
+              <Link href={`/mybookings/update/${_id}`} className="flex-1">
+                <button className="btn btn-primary w-full btn-sm">Edit</button>
+              </Link>
+
+              <button
+                onClick={() => handleDelete(_id)}
+                className="btn btn-error w-full btn-sm"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

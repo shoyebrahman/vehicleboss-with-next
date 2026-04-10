@@ -15,7 +15,7 @@ const Checkout = ({ params }) => {
   //   const details = await getServicesDetails(params.id);
   //   setService(details);
   // };
-  const { _id, title, description, img, price, facility } = service || {};
+  const { _id, title, img, price } = service || {};
 
   const handleBooking = async (event) => {
     event.preventDefault();
@@ -57,27 +57,30 @@ const Checkout = ({ params }) => {
     }
   }, [id]);
   return (
-    <div className="container mx-auto">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ToastContainer />
-      <div className="relative  h-72">
+
+      <div className="relative w-full h-48 sm:h-64 md:h-72 lg:h-80 rounded-xl overflow-hidden">
         {img && (
           <Image
-            className="absolute h-72 w-full left-0 top-0 object-cover"
+            className="absolute w-full h-full object-cover"
             src={img}
             alt="service"
             width={1920}
             height={1080}
           />
         )}
-        <div className="absolute h-full left-0 top-0 flex items-center justify-center  from-[#151515] to-[rgba(21, 21, 21, 0)] ">
-          <h1 className="text-white text-3xl font-bold flex justify-center items-center ml-8">
+
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent flex items-center">
+          <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold px-4 sm:px-8">
             Checkout {title}
           </h1>
         </div>
       </div>
-      <div className="my-12 bg-slate-300 p-12">
+
+      <div className="my-8 sm:my-12 bg-slate-200 rounded-xl p-4 sm:p-6 md:p-10 lg:p-12">
         <form onSubmit={handleBooking}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
@@ -86,9 +89,10 @@ const Checkout = ({ params }) => {
                 defaultValue={data?.user?.name}
                 type="text"
                 name="name"
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Date</span>
@@ -97,9 +101,10 @@ const Checkout = ({ params }) => {
                 defaultValue={new Date().toISOString().split("T")[0]}
                 type="date"
                 name="date"
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -108,10 +113,10 @@ const Checkout = ({ params }) => {
                 defaultValue={data?.user?.email}
                 type="text"
                 name="email"
-                placeholder="email"
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Due amount</span>
@@ -121,9 +126,10 @@ const Checkout = ({ params }) => {
                 readOnly
                 type="text"
                 name="price"
-                className="input input-bordered"
+                className="input input-bordered w-full bg-gray-100"
               />
             </div>
+
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Phone</span>
@@ -133,10 +139,11 @@ const Checkout = ({ params }) => {
                 type="text"
                 name="phone"
                 placeholder="Your Phone"
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
-            <div className="form-control">
+
+            <div className="form-control md:col-span-2">
               <label className="label">
                 <span className="label-text">Present Address</span>
               </label>
@@ -144,13 +151,14 @@ const Checkout = ({ params }) => {
                 type="text"
                 name="address"
                 placeholder="Your Address"
-                className="input input-bordered"
+                className="input input-bordered w-full"
               />
             </div>
           </div>
-          <div className="form-control mt-6">
+
+          <div className="mt-6">
             <input
-              className="btn btn-primary btn-block"
+              className="btn btn-primary w-full text-base sm:text-lg"
               type="submit"
               value="Order Confirm"
             />

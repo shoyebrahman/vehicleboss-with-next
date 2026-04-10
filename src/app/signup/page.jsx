@@ -1,4 +1,5 @@
 "use client";
+import SocialSignin from "@/component/shared/SocialSignin";
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,63 +40,77 @@ const page = () => {
     }
   };
   return (
-    <div className="container px-24 mx-auto py-24">
-      <div className="grid grid-cols-2 gap-12">
-        <div>
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 lg:py-20">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="flex justify-center">
           <Image
             src="/assets/images/login/login.svg"
-            alt="login"
-            height={540}
-            width={540}
-          ></Image>
+            alt="signup"
+            height={500}
+            width={500}
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
+          />
         </div>
-        <div className="border-2 p-12">
-          <h6 className="text-3xl font-semibold text-primary text-center">
-            SignUp Now
+
+        <div className="border rounded-xl shadow-md p-6 sm:p-8 md:p-10 lg:p-12 bg-white">
+          <h6 className="text-2xl sm:text-3xl font-semibold text-primary text-center mb-6">
+            Sign Up Now
           </h6>
-          <form onSubmit={handlesubmit}>
-            <label htmlFor="email">Name</label> <br />
-            <input
-              type="text"
-              placeholder="your name"
-              name="name"
-              className="input input-bordered w-full max-w-xs"
-            />
-            <br />
-            <label htmlFor="email">Email</label> <br />
-            <input
-              type="text"
-              placeholder="your email"
-              name="email"
-              className="input input-bordered w-full max-w-xs"
-            />
-            <br />
-            <label htmlFor="password">Password</label> <br />
-            <input
-              type="password"
-              placeholder="your password"
-              name="password"
-              className="input input-bordered w-full max-w-xs"
-            />{" "}
-            <br />
-            <button className="w-full btn btn-primary mt-12">Sign up</button>
-          </form>
-          <div>
-            <h6 className="my-12 text-center">or signin with</h6>
-            <div className="flex items-center justify-center space-x-3">
-              <button className="btn p-6 flex items-center justify-center text-primary">
-                {" "}
-                <FaGoogle />
-              </button>
-              <button className="btn p-6 flex items-center justify-center text-primary">
-                {" "}
-                <FaGithub />{" "}
-              </button>
+
+          <form onSubmit={handlesubmit} className="space-y-4">
+            <div>
+              <label className="block mb-1 text-sm sm:text-base">Name</label>
+              <input
+                type="text"
+                placeholder="your name"
+                name="name"
+                className="input input-bordered w-full"
+              />
             </div>
-            <h6 className="my-12 text-center">
-              not have an accout ? <Link href={"/login"}> Sign In</Link>{" "}
+
+            <div>
+              <label className="block mb-1 text-sm sm:text-base">Email</label>
+              <input
+                type="text"
+                placeholder="your email"
+                name="email"
+                className="input input-bordered w-full"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-1 text-sm sm:text-base">
+                Password
+              </label>
+              <input
+                type="password"
+                placeholder="your password"
+                name="password"
+                className="input input-bordered w-full"
+              />
+            </div>
+
+            <button className="w-full btn btn-primary mt-4 text-base sm:text-lg">
+              Sign Up
+            </button>
+          </form>
+
+          <div className="mt-6">
+            <h6 className="text-center mb-4 text-sm sm:text-base">
+              or sign up with
             </h6>
+
+            <div className="flex items-center justify-center gap-3 flex-wrap">
+              <SocialSignin></SocialSignin>
+            </div>
           </div>
+
+          <h6 className="mt-6 text-center text-sm sm:text-base">
+            Already have an account?{" "}
+            <Link href="/login" className="text-primary font-medium">
+              Sign In
+            </Link>
+          </h6>
         </div>
       </div>
     </div>
