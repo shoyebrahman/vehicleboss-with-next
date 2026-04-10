@@ -4,7 +4,7 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaGoogle, FaGithub } from "react-icons/fa";
+//import { FaGoogle, FaGithub } from "react-icons/fa";
 
 const page = () => {
   const handlesubmit = async (event) => {
