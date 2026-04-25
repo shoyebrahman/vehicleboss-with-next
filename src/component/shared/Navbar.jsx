@@ -47,7 +47,13 @@ const Navbar = () => {
           </ul>
         </div>
         <Link href={"/"}>
-          <Image alt="logo" src="/assets/logo.svg" height={60} width={100} />
+          <Image
+            src="https://i.ibb.co/DHzw9Ltn/logo2.png"
+            alt="logo"
+            width={100}
+            height={60}
+            className="h-auto w-20 sm:w-24 md:w-28 lg:w-32"
+          />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

@@ -66,22 +66,32 @@ const handler = NextAuth({
     async signIn({ user, account }) {
       if (account.provider === "google" || account.provider === "github") {
         const { name, email, image } = user;
+
         try {
           const db = await connectDB();
           const userCollection = db.collection("users");
+
           const userExist = await userCollection.findOne({ email });
+
           if (!userExist) {
-            const res = await userCollection.insertOne(users);
-            return user;
-          } else {
-            return user;
+            const newUser = {
+              name,
+              email,
+              image,
+              createdAt: new Date(),
+            };
+
+            await userCollection.insertOne(newUser);
           }
+
+          return true; // ✅ IMPORTANT
         } catch (error) {
           console.log(error);
+          return false; // ❌ deny if error
         }
-      } else {
-        return user;
       }
+
+      return true;
     },
   },
 });
