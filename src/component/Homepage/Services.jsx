@@ -6,34 +6,23 @@ const Services = async () => {
   const services = await getServices();
 
   return (
-    <div className="text-slate-800 min-h-screen px-4 sm:px-6 lg:px-10 py-10">
-      <div className="text-center max-w-2xl mx-auto space-y-3">
-        <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-orange-600">
+    <div className="mt-10 px-4 sm:px-6 lg:px-12">
+      <div className="max-w-5xl mx-auto text-center mb-10">
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-orange-600">
           Our Services
-        </h3>
+        </h1>
 
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold">
-          Our Service Area
-        </h2>
-
-        <p className="text-sm sm:text-base md:text-lg text-gray-600">
+        <p className="text-gray-600 mt-3 text-sm sm:text-base px-2 sm:px-10">
           The majority have suffered alteration in some form, by injected
-          humour.
+          humour, or randomised words which don't look even slightly believable.
         </p>
+
+        <h1 className="mt-4 text-lg sm:text-xl font-semibold">
+          Total Services: {services.length}
+        </h1>
       </div>
 
-      <div
-        className="
-        mt-8 sm:mt-10 md:mt-12
-        grid 
-        grid-cols-1 
-        sm:grid-cols-2 
-        md:grid-cols-3 
-        lg:grid-cols-3 
-        xl:grid-cols-4 
-        gap-4 sm:gap-5 md:gap-6
-      "
-      >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
         {services?.length > 0 &&
           services.map((service) => (
             <ServiceCard key={service._id} service={service} />

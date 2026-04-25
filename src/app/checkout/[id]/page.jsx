@@ -126,7 +126,7 @@ const Checkout = ({ params }) => {
                 readOnly
                 type="text"
                 name="price"
-                className="input input-bordered w-full bg-gray-100"
+                className="input input-bordered w-full "
               />
             </div>
 

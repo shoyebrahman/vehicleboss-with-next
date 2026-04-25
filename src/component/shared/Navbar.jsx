@@ -53,14 +53,11 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-3">
           {navitems.map((item) => (
-            <Link
-              className="font-semibold hover:text-primary duration-300 "
-              href={item.path}
-              key={item.path}
-            >
-              {" "}
-              {item.title}
-            </Link>
+            <li key={item.path}>
+              <Link href={item.path} className="font-semibold">
+                {item.title}
+              </Link>
+            </li>
           ))}
         </ul>
       </div>
@@ -99,7 +96,7 @@ const navitems = [
   },
   {
     title: "Services",
-    path: "/services",
+    path: "/theservice",
   },
   {
     title: "MyBooking",

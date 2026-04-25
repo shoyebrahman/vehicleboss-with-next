@@ -1,58 +1,53 @@
 import React from "react";
 import Image from "next/image";
+// Ensure these paths are correct relative to your project structure
+import parts from "../../../public/assets/images/about_us/parts.jpg";
+import person from "../../../public/assets/images/about_us/person.jpg";
 
-const About = () => {
+export const About = () => {
   return (
-    <div className="hero min-h-screen text-slate-800 px-4 sm:px-6 lg:px-10">
-      <div className="hero-content flex flex-col lg:flex-row items-center gap-10">
-        <div className="w-full lg:w-1/2 relative flex justify-center">
-          <Image
-            width={1000}
-            height={1000}
-            alt="Person image"
-            src={"/assets/images/about_us/person.jpg"}
-            className="w-4/5 sm:w-3/4 md:w-2/3 lg:w-3/4  rounded-lg shadow-2xl"
-          />
+    <div className="bg-base-200 mt-6">
+      <div className="container mx-auto px-4 py-12 lg:py-24">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
+          {/* Images Section */}
+          <div className="w-full lg:w-1/2 relative flex justify-center lg:justify-start">
+            {/* Main Person Image */}
+            <div className="w-3/4 sm:w-2/3 lg:w-3/4">
+              <Image
+                src={person}
+                alt="Person"
+                className="rounded-lg shadow-2xl"
+                // No width/height needed here because it's a static import!
+                priority
+              />
+            </div>
 
-          <Image
-            width={1000}
-            height={1000}
-            alt="Part image"
-            src={"/assets/images/about_us/parts.jpg"}
-            className="
-              w-2/3 sm:w-1/2 
-              absolute 
-              right-2 sm:right-5 
-              top-1/2 
-              translate-y-[-50%]
-              rounded-lg 
-              border-4 sm:border-8 border-white 
-              shadow-2xl
-            "
-          />
-        </div>
+            {/* Overlaying Parts Image */}
+            {/* We use a wrapper div to handle the absolute positioning */}
+            <div className="absolute right-0 lg:right-12 top-1/2 transform -translate-y-1/2 w-1/2 sm:w-1/3 lg:w-1/2">
+              <Image
+                src={parts}
+                alt="Parts"
+                className="rounded-lg border-4 sm:border-8 border-white shadow-2xl"
+              />
+            </div>
+          </div>
 
-        <div className="w-full lg:w-1/2 space-y-4 sm:space-y-5 text-center lg:text-left">
-          <h3 className="text-xl sm:text-2xl md:text-3xl text-orange-500 font-bold">
-            About Us
-          </h3>
-
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight">
-            We are qualified & of experience in this field
-          </h1>
-
-          <p className="text-sm sm:text-base md:text-lg text-gray-600">
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form.
-          </p>
-
-          <p className="text-sm sm:text-base md:text-lg text-gray-600">
-            There are many variations of passages of Lorem Ipsum available, but
-            the majority have suffered alteration in some form.
-          </p>
-
-          <div className="pt-2">
-            <button className="btn btn-primary btn-sm sm:btn-md md:btn-lg">
+          {/* Text Content */}
+          <div className="w-full lg:w-1/2 text-center lg:text-left">
+            <h2 className="text-2xl sm:text-3xl font-bold text-orange-500 mb-2">
+              About Us
+            </h2>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold mb-4">
+              We are qualified & experienced in this field
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg mb-6 text-gray-600">
+              There are many variations of passages of Lorem Ipsum available,
+              but the majority have suffered alteration in some form, by
+              injected humour, or randomised words which don't look even
+              slightly believable.
+            </p>
+            <button className="btn btn-primary bg-orange-600 border-none hover:bg-orange-700 text-white">
               Get More Info
             </button>
           </div>
